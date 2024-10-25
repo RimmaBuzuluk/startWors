@@ -59,7 +59,7 @@ export const UserPage = () => {
 				id: `film-${index}`,
 				data: { label: film.title },
 				position: { x, y },
-				style: { width: 80, height: 80, backgroundColor: filmColor },
+				style: { width: 90, height: 90, backgroundColor: filmColor },
 			};
 		});
 
@@ -89,20 +89,21 @@ export const UserPage = () => {
 			const filmColor = colors[filmIndex % colors.length];
 
 			filmStarships.forEach((ship: any, shipIndex: any) => {
-				// Протилежний кут відносно центра користувача
 				const angle = Math.PI + ((shipIndex * 2) / filmStarships.length) * Math.PI;
-				const x = filmPosition.x + radiusShips * Math.cos(angle);
-				const y = filmPosition.y + radiusShips * Math.sin(angle);
+				const x = filmPosition.x + radiusShips * Math.cos(angle) * 1.5;
+				const y = filmPosition.y + radiusShips * Math.sin(angle) * 1.5;
 
 				shipNodes.push({
 					id: `ship-${filmIndex}-${shipIndex}`,
 					data: { label: ship.name },
 					position: { x, y },
 					style: {
-						width: 80,
-						height: 80,
+						width: 110,
+						height: 110,
+						fontSize: 12,
 						backgroundColor: filmColor,
 						borderRadius: '50%',
+						padding: 20,
 					},
 				});
 
