@@ -30,8 +30,8 @@ export const UsersPage = () => {
 	};
 
 	return (
-		<div className=''>
-			<div className='flex flex-col'>
+		<div className=' w-full'>
+			<div className='flex flex-col '>
 				{users.map((user: Person) => (
 					<UserButton key={user.id} user={user} />
 				))}

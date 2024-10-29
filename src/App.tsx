@@ -10,7 +10,7 @@ const App = () => {
 	return (
 		<div className='bg-black flex flex-col justify-between min-h-full'>
 			<Header />
-			<div className='container my-0 mx-auto mb-2 px-4'>
+			<div className='container my-0 mx-auto mb-2 px-4 flex-1  flex justify-center  items-center'>
 				<Routes>
 					<Route path='/' element={<UsersPage />} />
 					<Route path='/user/:userId' element={<UserPage />} />

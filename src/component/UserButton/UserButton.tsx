@@ -11,7 +11,7 @@ export const UserButton = ({ user }: Props) => {
 		navigate(`/user/${userId}`);
 	};
 	return (
-		<button onClick={() => handleUserPage(user.id)} className='block text-black bg-white text-colar mb-4 border-yellow-300 font-bold p-2 rounded-3xl box-border border-4 hover:bg-gray-400'>
+		<button onClick={() => handleUserPage(user.id)} className=' block text-black bg-white text-colar mb-4 border-yellow-300 font-bold p-2 rounded-3xl box-border border-4 hover:bg-gray-400'>
 			{user.name}
 		</button>
 	);
