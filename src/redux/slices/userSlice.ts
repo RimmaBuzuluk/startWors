@@ -5,15 +5,11 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async ({ page = 1
 	const response = await fetch(`https://sw-api.starnavi.io/people/?page=${page}`);
 	const users = await response.json();
 
-	// console.log('user', users);
-
 	return {
 		users: users.results,
-		// nextPageUrl: users.next,
 		totalUsers: users.count,
 		nextPageUrl: users.next,
 		previousPageUrl: users.previous,
-		// totalUsers: users.count,
 	};
 });
 
