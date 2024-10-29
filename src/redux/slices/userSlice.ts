@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Person } from '../../types/Person';
+import { apiRoutes } from '../../utils/constant/apiRouter';
+import { ErrorMessages } from '../../utils/constant/error';
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async ({ page = 1 }: { page: number }) => {
-	const response = await fetch(`https://sw-api.starnavi.io/people/?page=${page}`);
+	const response = await fetch(`${apiRoutes.People}/?page=${page}`);
 	const users = await response.json();
 
 	return {
@@ -38,7 +40,7 @@ const usersSlice = createSlice({
 			})
 			.addCase(fetchUsers.rejected, (state, action) => {
 				state.status = 'failed';
-				state.error = action.error.message || 'An error occurred';
+				state.error = action.error.message || ErrorMessages.FAILED_TO_FETCH_USERS;
 			});
 	},
 });

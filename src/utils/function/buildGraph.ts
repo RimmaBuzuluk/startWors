@@ -3,6 +3,8 @@ import { Person } from '../../types/Person';
 import { Film } from '../../types/Film';
 import { colors } from '../constant/colors';
 import { Starship } from '../../types/Starship';
+import { apiRoutes } from '../constant/apiRouter';
+import { ErrorMessages } from '../constant/error';
 
 export const buildGraph = async (user: Person, setNodes: (nodes: Node[]) => void, setEdges: (edges: Edge[]) => void) => {
 	const userNode: Node = {
@@ -12,7 +14,10 @@ export const buildGraph = async (user: Person, setNodes: (nodes: Node[]) => void
 		style: { width: 100, height: 100, backgroundColor: '#ddd' },
 	};
 
-	const responseFilme = await fetch('https://sw-api.starnavi.io/films');
+	const responseFilme = await fetch(apiRoutes.Films);
+	if (!responseFilme.ok) {
+		throw new Error(ErrorMessages.FAILED_TO_FETCH_FILMS);
+	}
 	const films = await responseFilme.json();
 
 	const userFilms = films.results.filter((film: Film) => film.characters.includes(user.id));
@@ -44,7 +49,10 @@ export const buildGraph = async (user: Person, setNodes: (nodes: Node[]) => void
 		};
 	});
 
-	const responseShips = await fetch('https://sw-api.starnavi.io/starships');
+	const responseShips = await fetch(apiRoutes.Starships);
+	if (!responseShips.ok) {
+		throw new Error(ErrorMessages.FAILED_TO_FETCH_STARSHIPS);
+	}
 	const ships = await responseShips.json();
 
 	const shipNodes: Node[] = [];
