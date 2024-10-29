@@ -35,7 +35,7 @@ export const UserPage = () => {
 	}, [userId]);
 
 	if (loading) return <div className='text-white'>Loading...</div>;
-	if (error) return <div>Error: {error}</div>;
+	if (error) return <div className='text-white'>Error: {error}</div>;
 
 	return (
 		<div className='text-white container '>
